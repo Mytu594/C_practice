@@ -1,0 +1,291 @@
+//1.水仙花
+#include<stdio.h>
+main()
+{
+	int i,j,k,n;
+	printf("水仙花数是:");
+	for(n=100;n<1000;n++)
+	{
+		i=n/100;
+		j=n/10%10;
+		k=n%10;
+		if(i*100+j*10+k=i*i*i+j*j*j+k*k*k)
+		{
+			printf("%-5d",n);
+		}
+	}
+	printf("\n");
+}
+
+//2.100以内的完数
+#include<stdio.h>
+void main()
+{
+	int i,j,n,s;
+	for(j=2;j<100;j++)
+	{
+		n=-1;
+		s=j;
+		for(i=1;i<=j/2;i++)
+		{
+			if((j%i)==0)
+			{
+				n++;
+				s=s-i;
+			}
+		}
+		if(s==0)
+		{
+			printf("%d is a wanshu\n",j);
+		}
+	}
+}
+
+//3.统计有多少个单词
+#include<stdio.h>
+
+#include<string.h>
+
+void main()
+
+{
+   
+	char ch[15];
+   
+	int i=0,j=0;
+   
+	printf("输入字符串:");
+   
+	gets(ch);
+   
+	for(i=0;i<15;i++)
+   
+	{
+   
+		if(ch[i]==' ')
+       
+		j=1+j;
+   
+	}
+   
+	printf("单词个数为%d",j+1);
+
+}
+
+//4.以#结束,统计字母和数字
+#include<stdio.h>
+void main()
+{	int ch_num,dig_num;
+	char ch;
+	ch_num=dig_num=0;
+	do{
+		ch=getchar();
+		if（(ch>'A'&&ch<'Z')||(ch>'a'&&ch<'z')）
+		ch_num++;
+		if(ch>'0'&&ch<'9')
+		dig_num++;
+	}while(ch!='#'); 
+	printf("The number of chars is:%d\n",ch_num);
+	printf("The number of digital is:%d\n",dig_num);
+}
+
+//5.素数
+#include<stdio.h>
+void main()
+{
+	int xx[200];
+	int g=0,i,j,flag=1;
+	int cnt=0;
+	i=7;
+	while(cnt<5)
+	{
+		for(j=2;j<i;j++)
+			if(i%j==0)
+				break;
+		if(j>=i)
+		{
+			xx[cnt]=i;
+			cnt++;
+		}
+		i++;
+	}
+	printf("找到的素数为:\n");
+	for(j=0;j<k;j++)
+		printf("%d",xx[j]);
+}
+
+//6
+猜数,U盘
+//7
+小学加法,方薇,U盘
+//8.排名
+#include<stdio.h>
+void paiming(int r,char xm[][5],int score[][5]);
+void chazhao(int r,char xm[][5],int score[][5]);
+void main()
+{
+	int i,n,j,r,m=0;
+	int score[100][5];
+	char xm[100][5];
+	printf("输入参赛人数");
+	scanf("%d",&r);
+	for(i=0;i<r;i++)
+	{
+		printf("请输入姓名以及五位评委的打分:");
+		scanf("%s",&xm[i]);
+		for(j=0;j<5;j++)
+		{
+			scanf("%d",&score[m][j]);
+		}
+		m++;
+	}
+	printf("menu 1排名 2查找 3退出(请输入对应功能的数字)");
+	scanf("%d",&n);
+	if(n==1)
+	{
+		paiming(r,xm,score);
+	}
+	if(n==2)
+	{
+		chazhao(r,xm,score);
+	}
+	if(n==3)
+	{
+		printf("已退出");
+	}
+}
+void paiming(int r,char xm[][5],int score[][5])
+{
+	int i,j,sum[10],h=0,h3=0,m=0;
+	char h1;
+	for(i=0;i<r;i++)
+	{
+		for(j=0,m=0;j<5;j++)
+		{
+			m+=score[i][j];
+		}
+		sum[i]=m;
+	}
+	for(i=0;i<r;i++)
+		printf("%d",sum[i]);
+	for(i=0;i<r-1;i++)
+	{
+		if(sum[i]<sum[i+1])
+		{
+			h=sum[i];
+			sum[i]=sum[i+1];
+			sum[i+1]=h;
+			for(j=0;j<5;j++)
+			{
+				h1=xm[i][j];
+				xm[i][j]=xm[i+1][j];
+				xm[i+1][j]=h1;
+			}
+			for(m=0;m<5;m++)
+			{
+				h3=score[i][m];
+				score[i][m]=score[i+1][m];
+				score[i+1][m]=h3;
+			}
+		}
+	}
+	printf("姓名为: 评委评分:                 总分:   \n");
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<10;j++)
+		{
+			printf("%c",xm[i][j]);
+		}
+		printf("    ");
+		for(j=0;j<5;j++)
+		{
+			printf("&d		",score[i][j]);
+		}
+		printf("&d ",sum[i]);
+		printf("\n");
+	}
+}
+void chazhao(int r,char xm[][5],int score[][5])
+{
+	int i,j,m=0;
+	char ch[5];
+	printf("输入名字:");
+	scanf("%是",&ch);
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(xm[i][j]==ch[j])
+			{
+				continue;
+			}
+			else
+				break;
+		}
+		if(j==5)
+			m=i;
+	}
+	puts(ch);
+	for(i=0;i<5;i++)
+		printf("%d",score[m][i]);
+}
+//9
+#include<stdio.h>
+#define m 100
+int fun(int a[][2],int b[][2],int n);
+void main()
+{
+	int i,j,n,a[m][2],b[m][2];
+	printf("请输入学生的总数：");
+	scanf("%d",&n);
+	printf("请输入学生的学号和成绩：");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<2;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("高于平均分的学生数量为%d",fun(a,b,n));
+}
+int fun(int a[][2],int b[][2],int n)
+{
+	int j,sum=0,avg,total=0;
+	for(j=0;j<n;j++)
+	{
+		sum+=a[j][1];
+	}
+	avg=sum/n;
+	for(j=0;j<n;j++)
+	{
+		if(a[j][1]>avg)
+		{
+			b[j][1]=a[j][1];
+			total=total+1;
+		}
+			
+	}
+	return (total);
+}
+
+//10指针交换
+#include <stdio.h>
+void swap(int *x, int *y);
+main()
+{
+ int a,b;
+ printf("Please enter a,b:");
+ scanf("%d,%d",&a,&b); 
+ printf("Before swap: a=%d,b=%d\n",a,b); 
+ swap(&a, &b);                          
+ printf("After swap: a=%d,b=%d\n",a,b);  
+}
+void swap(int *x, int *y)
+{  
+    int temp;  
+    temp=*x;  
+    *x=*y;  
+    *y=temp;
+}
+
+

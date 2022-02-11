@@ -1,0 +1,19 @@
+#include<stdio.h>
+main()
+{
+	int a=0,b=0,c=0;
+	for(a=0;a<=20;a++)
+	{
+		for(b=0;b<=33;b++)
+		{
+			c=100-a-b;
+			c%3==0;
+			if(3*a+5*b+c/3==100)
+			{
+				printf("公鸡的数量为:%d\n",a);
+                printf("母鸡的数量为:%d\n",b);
+                printf("小鸡的数量为:%d\n",c);
+			}
+		}
+	}
+}
